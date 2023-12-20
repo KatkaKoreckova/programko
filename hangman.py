@@ -32,3 +32,24 @@ def is_in_word(secret, letter):
         return True
     else:
         return False
+def print_formatted(word):
+    result = ' '.join(word)
+    print(result)
+
+def get_random_word():
+    words = [ 'hollow', 'frequent', 'poke', 'tongue', 'quick', 'market', 'butter']
+    pos = random.randint(0, len(words) - 1)
+    return words[pos]
+
+
+#samotny program
+secret = get_random_word()
+guessed = len(secret) * '_'
+g_left = 8
+alphabet = "abcdefghijklmnopqrstuvwxyz"
+#print(secret)
+print('Welcome to the game, Hangman!')
+print(f'I am thinking of a word that is {len(secret)} letters long.')
+print('-------------')
+
+
