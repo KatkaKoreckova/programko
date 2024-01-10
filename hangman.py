@@ -32,6 +32,7 @@ def is_in_word(secret, letter):
         return True
     else:
         return False
+    
 def print_formatted(word):
     result = ' '.join(word)
     print(result)
@@ -47,9 +48,33 @@ secret = get_random_word()
 guessed = len(secret) * '_'
 g_left = 8
 alphabet = "abcdefghijklmnopqrstuvwxyz"
-#print(secret)
+print(secret)
 print('Welcome to the game, Hangman!')
 print(f'I am thinking of a word that is {len(secret)} letters long.')
 print('-------------')
+
+while (is_word_guessed(secret, guessed) == False):
+    print('Available letters:', end=' ')
+    print_formatted(alphabet)
+    letter = input('Please guess a letter: ')
+
+    if (len(letter) != 1):
+        print("Oops! That's not a letter:", end=' ')
+    elif (is_in_word(alphabet, letter) == False):
+        print("Oops! That's not a letter:", end=' ')
+    elif (is_in_word(secret, letter) == False):
+        print('Oops! That letter is not in my word:', end=' ')
+    else:
+        print('Good guess:', end=' ')
+        guessed = update_guessed(letter, guessed, secret)
+
+    alphabet = get_available_letters(alphabet, letter)
+    print_formatted(guessed)
+    print('-------------')
+
+
+print("Congratulations, you won!")
+
+
 
 
